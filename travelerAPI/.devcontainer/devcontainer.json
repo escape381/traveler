@@ -9,7 +9,13 @@
     "customizations": {
       "vscode": {
         "settings": {
-          "go.gopath": "/go"
+          "go.gopath": "/home/go",
+          "go.formatTool": "gofmt",
+          "go.useLanguageServer": true,
+          "editor.formatOnSave": false,
+          "[go]": {
+            "editor.formatOnSave": true
+          }
         },
         "extensions": [
           "golang.Go",
