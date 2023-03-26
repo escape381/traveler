@@ -1,0 +1,26 @@
+{
+    "name": "Go",
+    "dockerComposeFile": [
+      "./docker-compose.yml"
+    ],
+    "service": "app",
+    "remoteUser": "vscode",
+    "workspaceFolder": "/var/traveler/travelerAPI",
+    "customizations": {
+      "vscode": {
+        "settings": {
+          "go.gopath": "/go"
+        },
+        "extensions": [
+          "golang.Go",
+          "mhutchie.git-graph",
+          "oderwat.indent-rainbow",
+          "DavidAnson.vscode-markdownlint"
+        ]    
+      }
+    },
+    "remoteEnv": {
+      "GIT_WORK_TREE": "/var/traveler",
+      "GIT_DIR": "/var/traveler/.git"
+    }
+  }
