@@ -16,6 +16,11 @@ RUN apt-get install -y \
   git \
   build-essential
 ENV GO111MODULE on
+ENV GOPATH /home/go
+
+# こっちはそのままだとrootユーザ所有なのであとで自力でvscodeユーザにする。
+WORKDIR /home/go
+# こちらはdocker-comoseでマウントしてるので元からvscodeユーザ
 WORKDIR /var/traveler/travelerAPI
 # test dayo data
 RUN go install github.com/uudashr/gopkgs/v2/cmd/gopkgs@latest && \
@@ -28,3 +33,5 @@ RUN go install github.com/uudashr/gopkgs/v2/cmd/gopkgs@latest && \
   go install github.com/go-delve/delve/cmd/dlv@latest && \
   go install golang.org/x/lint/golint@latest && \
   go install golang.org/x/tools/gopls@latest
+
+RUN chown -R vscode:vscode /home/go
