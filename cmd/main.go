@@ -1,7 +1,12 @@
 package main
 
-import "fmt"
+import (
+	"fmt"
+
+	"github.com/escape381/traveler/domain/service"
+)
 
 func main() {
-	fmt.Println("Hello world!")
+	s := service.AnyService{}
+	fmt.Println(s.AnyFunc())
 }
