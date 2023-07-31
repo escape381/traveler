@@ -22,4 +22,7 @@ RUN go install github.com/go-delve/delve/cmd/dlv@latest
 RUN go install honnef.co/go/tools/cmd/staticcheck@latest
 RUN go install golang.org/x/tools/gopls@latest
 
+# gitコマンドのtabコマンドを効かせる
+RUN echo "source /usr/share/bash-completion/completions/git" >> ~/.bashrc
+
 WORKDIR /home/$USERNAME
