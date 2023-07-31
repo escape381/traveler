@@ -1,16 +1,15 @@
-FROM golang:1.20.6-alpine3.18
+FROM golang:1.20-bookworm
 
 ARG USERNAME=devuser
 ARG USER_UID=1000
 ARG USER_GID=$USER_UID
 
+RUN apt update && apt install -y --no-install-recommends git
+
 # Create the user
 # デフォルトだとコンテナ内のユーザがrootになってしまうので、ホスト側1000が存在することを前提にユーザを作る
-RUN apk update && \
-    apk add --no-cache bash && \
-    apk add --no-cache git bash && \
-    addgroup -g $USER_GID $USERNAME && \
-    adduser -u $USER_UID -G $USERNAME -s /bin/bash -D $USERNAME
+RUN groupadd -g $USER_GID $USERNAME && \
+    useradd -m -u $USER_UID -g $USERNAME -s /bin/bash $USERNAME
 
 USER $USERNAME
 # go installは開発ユーザで行う
@@ -22,5 +21,8 @@ RUN go install github.com/haya14busa/goplay/cmd/goplay@latest
 RUN go install github.com/go-delve/delve/cmd/dlv@latest
 RUN go install honnef.co/go/tools/cmd/staticcheck@latest
 RUN go install golang.org/x/tools/gopls@latest
+
+# gitコマンドのtabコマンドを効かせる
+RUN echo "source /usr/share/bash-completion/completions/git" >> ~/.bashrc
 
 WORKDIR /home/$USERNAME
