@@ -1,8 +1,9 @@
 {
     "name": "traveler",
-    "build": {
-        "dockerfile": "Dockerfile"
-    },
+    "dockerComposeFile": "./compose.yml",
+    "service": "main",
+    "remoteUser": "devuser",
+    "workspaceFolder": "/workspace/devuser",
     "customizations": {
         "vscode": {
             "extensions": [
