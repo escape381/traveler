@@ -4,5 +4,5 @@ services:
       context: ../
       dockerfile: .devcontainer/Dockerfile
     volumes:
-      - ..:/workspace/devuser:cached
+      - ..:/workspace/dev:cached
     tty: true
