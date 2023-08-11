@@ -1,8 +1,25 @@
 services:
   main:
+    container_name: traveler_api
     build:
       context: ../
       dockerfile: .devcontainer/Dockerfile
     volumes:
       - ..:/workspace/dev:cached
     tty: true
+
+  traveler_db:
+    image: mysql:5.7
+    container_name: traveler_db
+    environment:
+      MYSQL_ROOT_PASSWORD: password
+      MYSQL_DATABASE: traveler_db
+      MYSQL_USER: trav
+      MYSQL_PASSWORD: trav
+    volumes:
+      - db-store:/var/lib/mysql
+    ports:
+      - "3306:3306"
+
+volumes:
+  db-store:
