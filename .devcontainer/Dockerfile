@@ -1,5 +1,6 @@
 FROM golang:1.20-bookworm
 
+# Memo:1000以外を使いたければ、devcontainer.jsonのupdateRemoteUserUIDをfalseにする
 ARG USERNAME=devuser
 ARG USER_UID=1000
 ARG USER_GID=$USER_UID

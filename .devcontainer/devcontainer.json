@@ -1,8 +1,10 @@
 {
     "name": "traveler",
-    "build": {
-        "dockerfile": "Dockerfile"
-    },
+    "dockerComposeFile": "./compose.yml",
+    "service": "main",
+    "workspaceFolder": "/workspace/dev",
+    "remoteUser": "devuser",
+    "updateRemoteUserUID": true,
     "customizations": {
         "vscode": {
             "extensions": [
@@ -11,5 +13,5 @@
                 "golang.go"
             ]
         }
-    },
+    }
 }
